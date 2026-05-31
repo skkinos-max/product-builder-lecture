@@ -1,18 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>로또 번호 추첨기</title>
+  <title>인공지능 동물상 테스트</title>
   <link href='/style.css' rel='stylesheet'>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
   <div class="theme-toggle">
     <button id="theme-button">🌙 다크 모드</button>
   </div>
-  <h1>로또 번호 추첨</h1>
-  <button id="draw-button">추첨 시작</button>
-  <div id="lotto-numbers"></div>
+
+  <header>
+    <h1>인공지능 동물상 테스트</h1>
+    <p>나의 얼굴은 어떤 동물과 닮았을까요?</p>
+  </header>
+
+  <main class="container">
+    <div class="upload-section">
+      <input type="file" id="image-input" accept="image/*" hidden>
+      <label for="image-input" class="upload-label">
+        <div class="upload-icon">📸</div>
+        <span>사진을 업로드하세요</span>
+      </label>
+    </div>
+
+    <div id="loading" class="hidden">모델 로딩 중...</div>
+
+    <div id="result-container" class="hidden">
+      <img id="image-preview" src="#" alt="미리보기">
+      <div id="label-container"></div>
+    </div>
+  </main>
 
   <div id="disqus_thread"></div>
   <script>

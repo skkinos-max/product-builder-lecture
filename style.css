@@ -1,105 +1,165 @@
 :root {
-  --bg-color: #f4f4f4;
-  --text-color: #333;
-  --button-bg: #007bff;
-  --button-hover: #0056b3;
-  --lotto-bg: #28a745;
-  --lotto-text: white;
-  --toggle-btn-bg: #eee;
-  --toggle-btn-text: #333;
+  --bg-color: #ffffff;
+  --container-bg: #f8f9fa;
+  --text-color: #212529;
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --toggle-btn-bg: #e9ecef;
+  --toggle-btn-text: #495057;
+  --border-color: #dee2e6;
+  --progress-bg: #e9ecef;
 }
 
 body.dark-mode {
-  --bg-color: #1a1a1a;
-  --text-color: #f4f4f4;
-  --button-bg: #375a7f;
-  --button-hover: #2b4764;
-  --lotto-bg: #1e7e34;
-  --lotto-text: #e0e0e0;
+  --bg-color: #121212;
+  --container-bg: #1e1e1e;
+  --text-color: #e0e0e0;
+  --accent-color: #375a7f;
+  --accent-hover: #2b4764;
   --toggle-btn-bg: #333;
-  --toggle-btn-text: #f4f4f4;
+  --toggle-btn-text: #f8f9fa;
+  --border-color: #444;
+  --progress-bg: #333;
 }
 
 body {
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  min-height: 100vh;
 }
 
 .theme-toggle {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
+  z-index: 1000;
 }
 
 #theme-button {
-  padding: 8px 16px;
-  font-size: 14px;
-  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 1px solid var(--border-color);
   background-color: var(--toggle-btn-bg);
   color: var(--toggle-btn-text);
-  border: 1px solid #ccc;
-  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
   transition: all 0.3s ease;
 }
 
-h1 {
-  color: var(--text-color);
-  margin-bottom: 20px;
+header {
+  text-align: center;
+  margin: 60px 0 40px;
 }
 
-#draw-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: white;
-  background-color: var(--button-bg);
-  border: none;
-  border-radius: 5px;
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  opacity: 0.8;
+}
+
+.container {
+  width: 90%;
+  max-width: 600px;
+  background-color: var(--container-bg);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 50px;
+}
+
+.upload-section {
+  text-align: center;
+  border: 2px dashed var(--border-color);
+  border-radius: 15px;
+  padding: 40px 20px;
   cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
-#draw-button:hover {
-  background-color: var(--button-hover);
+.upload-section:hover {
+  border-color: var(--accent-color);
 }
 
-#lotto-numbers {
+.upload-label {
+  cursor: pointer;
+}
+
+.upload-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#loading {
+  text-align: center;
+  margin: 20px 0;
+  font-weight: 500;
+}
+
+#result-container {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 50px; /* Space between numbers and comments */
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#image-preview {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#label-container {
+  width: 100%;
+}
+
+.result-bar-wrapper {
+  margin-bottom: 15px;
+}
+
+.result-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 20px;
+  background-color: var(--progress-bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--accent-color);
+  transition: width 0.5s ease-out;
 }
 
 #disqus_thread {
   width: 90%;
   max-width: 800px;
-  margin: 0 auto 50px auto;
-  padding: 20px;
-  background-color: var(--bg-color);
-  border-radius: 8px;
+  margin-bottom: 50px;
 }
 
-.lotto-number {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: var(--lotto-bg);
-  color: var(--lotto-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, color 0.3s ease;
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
 }
