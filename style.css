@@ -77,6 +77,16 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: 50px; /* Space between numbers and comments */
+}
+
+#disqus_thread {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+  padding: 20px;
+  background-color: var(--bg-color);
+  border-radius: 8px;
 }
 
 .lotto-number {
